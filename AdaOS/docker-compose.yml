@@ -1,0 +1,34 @@
+networks:
+  default:
+    name: adaos
+
+services:
+  rasa:
+    image: rasa/rasa:latest
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+    ports:
+      - 5005:5005
+    command: >
+      run -m models --enable-api --cors "*" --debug
+  
+  rasa-actions:
+    image: ada-rasa-actions
+    build: 
+      context: .
+      dockerfile: ./actions.Dockerfile
+    restart: unless-stopped
+    volumes: 
+      - ./actions:/app/actions
+    ports: 
+      - 5055:5055
+
+#  whisper:
+#    image: adaos/whisper:latest
+#    networks:
+#      - adaos
+#    ports:
+#      - "5000:5000"
+#    depends_on:
+#      - rasa

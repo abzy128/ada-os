@@ -1,0 +1,4 @@
+openai==1.63.0
+pymorphy2==0.9.1
+requests==2.32.3
+rasa-sdk==3.11.0

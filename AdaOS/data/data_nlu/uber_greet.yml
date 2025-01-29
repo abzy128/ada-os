@@ -1,0 +1,29 @@
+version: "3.1"
+
+
+nlu:
+- intent: uber_greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - [Пиво](None)
+    - response
+    - 123
+    - dsddddddddddddd
+    - ddddddddddddddddddddddddddddddddddddddddddddddddddddd
+    - ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    - dssd
+    - dsds
+    - 111111111111111111111111111111
+    - 1111111111111111111111111111111111111111111111111111111111111
