@@ -7,7 +7,7 @@ services:
     image: rasa/rasa:latest
     restart: unless-stopped
     volumes:
-      - ./:/app
+      - ./rasa:/app
     ports:
       - 5005:5005
     command: >
@@ -16,11 +16,11 @@ services:
   rasa-actions:
     image: ada-rasa-actions
     build: 
-      context: .
-      dockerfile: ./actions.Dockerfile
+      context: ./rasa
+      dockerfile: ./rasa/actions.Dockerfile
     restart: unless-stopped
     volumes: 
-      - ./actions:/app/actions
+      - ./rasa/actions:/app/actions
     ports: 
       - 5055:5055
 
