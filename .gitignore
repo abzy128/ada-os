@@ -1,0 +1,14 @@
+# virtual env
+venv/
+.venv/
+
+# cache
+__pycache__/
+
+# pylsp
+.ropeproject/
+.vscode/
+
+# outputs
+output/
+temp/
