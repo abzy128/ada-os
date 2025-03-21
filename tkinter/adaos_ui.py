@@ -34,7 +34,7 @@ class ChatApp(ctk.CTk):
         self.input_frame = ctk.CTkFrame(self, height = 40)
         self.input_frame.pack(side="left", fill="both", expand = True, padx = 10, pady = 5)
 
-        self.load_icon = ctk.CTkImage(light_image=Image.open("Images/folder.png"), size=(15,15))
+        self.load_icon = ctk.CTkImage(light_image=Image.open("images/folder.png"), size=(15,15))
         self.load_button = ctk.CTkButton(self.input_frame, text="", image = self.load_icon, width = 30, command= self.upload_file_audio)
         self.load_button.pack(side = "left", expand = False, padx = (5, 5), pady = 5)
         
@@ -42,11 +42,11 @@ class ChatApp(ctk.CTk):
         self.entry_text.pack(side = "left", fill = "x", expand = True, padx = 5, pady = 5)
         self.entry_text.bind("<Return>", self.send_message)
 
-        self.send_icon = ctk.CTkImage(light_image=Image.open("Images/up-arrow.png"), size=(15,15))
+        self.send_icon = ctk.CTkImage(light_image=Image.open("images/up-arrow.png"), size=(15,15))
         self.send_button = ctk.CTkButton(self.input_frame, text="", image = self.send_icon, width = 30, command= self.send_message)
         self.send_button.pack(side = "right", expand = False, padx =(5, 5), pady = 5)
 
-        self.record_icon = ctk.CTkImage(light_image=Image.open("Images/microphone.png"), size=(15,15))
+        self.record_icon = ctk.CTkImage(light_image=Image.open("images/microphone.png"), size=(15,15))
         self.record_button = ctk.CTkButton(self.input_frame, text="", image = self.record_icon, width = 30)
         self.record_button.pack(side = "right", expand = False, padx=(2, 0), pady = 5)
         self.record_button.bind("<ButtonPress-1>", self.start_recording)
@@ -194,6 +194,7 @@ class ChatApp(ctk.CTk):
                 subprocess.run(["powershell", "-Command", command])
                 self.message_queue.put(f"Команда успешно выполнена...")
         except Exception as e:
+            raise
             self.update_User_message(f"Error: {str(e)}")
 
         self.entry_text.delete(0, END)
