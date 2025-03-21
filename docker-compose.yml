@@ -5,30 +5,27 @@ networks:
 services:
   rasa:
     image: rasa/rasa:latest
-    restart: unless-stopped
+    # restart: unless-stopped
     volumes:
       - ./rasa:/app
     ports:
       - 5005:5005
-    command: >
-      run -m models --enable-api --cors "*" --debug
+    command: run -m models --enable-api --cors "*" --debug
   
   rasa-actions:
-    image: ada-rasa-actions
     build: 
       context: ./rasa
-      dockerfile: ./rasa/actions.Dockerfile
-    restart: unless-stopped
+      dockerfile: actions.Dockerfile
+    # restart: unless-stopped
     volumes: 
       - ./rasa/actions:/app/actions
     ports: 
       - 5055:5055
 
-#  whisper:
-#    image: adaos/whisper:latest
-#    networks:
-#      - adaos
-#    ports:
-#      - "5000:5000"
-#    depends_on:
-#      - rasa
+  whisper:
+    build:
+      context: ./voice
+      dockerfile: Dockerfile
+    # restart: unless-stopped
+    ports:
+      - "8000:8000"
